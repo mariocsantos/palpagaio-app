@@ -21,7 +21,8 @@ class StudySessionScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context); // Modal is dismissed
+                Navigator.pop(context); // Screen is closed
               },
               child: const Text('Exit'),
             ),
@@ -47,7 +48,7 @@ class StudySessionScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 16, right: 16),
           child: Column(
             children: [
-              SizedBox(height: 52),
+              SizedBox(height: 16),
               FlipCard(
                 front: FlashCard(
                   text: 'English sentence',
