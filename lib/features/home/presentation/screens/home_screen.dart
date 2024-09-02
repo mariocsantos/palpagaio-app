@@ -1,14 +1,24 @@
+import 'package:flashlight/features/flashcard/presentation/screens/add_flashcard_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  _goToStudySession(BuildContext context) {
+    Navigator.pushNamed(context, '/session');
+  }
+
+  _addFlashcard(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return const AddFlashcardScreen();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    goToStudySession() {
-      Navigator.pushNamed(context, '/session');
-    }
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -17,7 +27,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 52),
               InkWell(
-                onTap: goToStudySession,
+                onTap: () => _goToStudySession(context),
                 borderRadius: BorderRadius.circular(12),
                 splashColor: Colors.white.withOpacity(0.24),
                 highlightColor: Colors.transparent,
@@ -62,6 +72,11 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => _addFlashcard(context),
+        label: const Text('Add cards'),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

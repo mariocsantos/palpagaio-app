@@ -1,5 +1,5 @@
-import 'package:flashlight/features/study_session/presentation/widgets/flashcard.dart';
-import 'package:flashlight/features/study_session/presentation/widgets/flip_card.dart';
+import 'package:flashlight/features/flashcard/presentation/widgets/flashcard.dart';
+import 'package:flashlight/features/flashcard/presentation/widgets/flip_card.dart';
 import 'package:flutter/material.dart';
 
 class StudySessionScreen extends StatelessWidget {
