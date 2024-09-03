@@ -14,7 +14,7 @@ class FlipCard extends StatefulWidget {
 
 class _FlipCardState extends State<FlipCard>
     with SingleTickerProviderStateMixin {
-  bool _showFrontSide = false;
+  bool _showFrontSide = true;
 
   Widget __buildLayout({required Key key, required Widget child}) {
     return Container(

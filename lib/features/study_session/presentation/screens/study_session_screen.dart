@@ -1,9 +1,16 @@
 import 'package:flashlight/features/flashcard/presentation/widgets/flashcard.dart';
 import 'package:flashlight/features/flashcard/presentation/widgets/flip_card.dart';
+import 'package:flashlight/features/study_session/domain/difficult.dart';
+import 'package:flashlight/features/study_session/presentation/widgets/difficulty_button.dart';
+import 'package:flashlight/features/study_session/presentation/widgets/study_section_progress.dart';
 import 'package:flutter/material.dart';
 
 class StudySessionScreen extends StatelessWidget {
   const StudySessionScreen({super.key});
+
+  _onDifficultySelected(BuildContext context, Difficult difficult) {
+    Navigator.pushNamed(context, '/session/completed');
+  }
 
   _confirmExit(BuildContext context) {
     showDialog(
@@ -45,25 +52,61 @@ class StudySessionScreen extends StatelessWidget {
             _confirmExit(context);
           },
         ),
+        title: const StudySectionProgress(current: 0, total: 10),
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
             children: [
-              const SizedBox(height: 16),
-              const FlipCard(
-                front: FlashCard(
-                  text: 'English sentence',
+              const SizedBox(height: 8),
+              const Flexible(
+                child: FlipCard(
+                  front: FlashCard(
+                    text: 'I would like to checking to my flight to L.A',
+                    audioUrl:
+                        'https://storage.googleapis.com/flashlight-audios/hello%2C-mario',
+                    isFront: true,
+                  ),
+                  back: FlashCard(
+                    text:
+                        'Eu gostaria de fazer o check-in do meu voo para Los Angeles',
+                    audioUrl:
+                        'https://storage.googleapis.com/flashlight-audios/hello%2C-mario',
+                  ),
                 ),
-                back: FlashCard(text: 'Portuguese translation'),
               ),
-              // TODO: Remove it when logic is implemented
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/session/completed');
-                  },
-                  child: const Text('finished')),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  DifficultyButton(
+                    difficult: Difficult.easy,
+                    onPressed: () {
+                      _onDifficultySelected(context, Difficult.easy);
+                    },
+                  ),
+                  DifficultyButton(
+                    difficult: Difficult.regular,
+                    onPressed: () {
+                      _onDifficultySelected(context, Difficult.regular);
+                    },
+                  ),
+                  DifficultyButton(
+                    difficult: Difficult.hard,
+                    onPressed: () {
+                      _onDifficultySelected(context, Difficult.hard);
+                    },
+                  ),
+                  DifficultyButton(
+                    difficult: Difficult.impossible,
+                    onPressed: () {
+                      _onDifficultySelected(context, Difficult.impossible);
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),

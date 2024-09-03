@@ -42,6 +42,9 @@ class _StudySessionCompletedScreenState
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
             children: [
+              const Spacer(
+                flex: 1,
+              ),
               Lottie.asset(
                 'assets/animations/celebration.json',
                 controller: _controller,
@@ -62,7 +65,6 @@ class _StudySessionCompletedScreenState
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 16),
               const Text(
                 'You have completed the study session.',
                 style: TextStyle(
@@ -70,7 +72,9 @@ class _StudySessionCompletedScreenState
                 ),
               ),
               const SizedBox(height: 16),
-              const Spacer(),
+              const Spacer(
+                flex: 2,
+              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(48),
