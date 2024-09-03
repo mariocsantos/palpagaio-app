@@ -1,6 +1,7 @@
 import 'package:flashlight/features/home/presentation/screens/home_screen.dart';
 import 'package:flashlight/features/study_session/presentation/screens/study_session_completed_screen.dart';
 import 'package:flashlight/features/study_session/presentation/screens/study_session_screen.dart';
+import 'package:flashlight/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
+      theme: themeData,
       routes: {
         '/': (context) => const HomeScreen(),
         '/session': (context) => const StudySessionScreen(),

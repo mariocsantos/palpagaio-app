@@ -24,6 +24,9 @@ class StudySessionScreen extends StatelessWidget {
                 Navigator.pop(context); // Modal is dismissed
                 Navigator.pop(context); // Screen is closed
               },
+              style: TextButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.error,
+              ),
               child: const Text('Exit'),
             ),
           ],

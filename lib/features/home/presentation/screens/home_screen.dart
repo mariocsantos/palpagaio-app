@@ -75,6 +75,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _addFlashcard(context),
         label: const Text('Add cards'),
+        icon: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
