@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Original colors
+/// primary: #63f8b5
+/// secondary: #7765e3
+
 ColorScheme colorScheme = ColorScheme.fromSeed(
   seedColor: const Color(0xFF4e39b8),
   primary: const Color(0xFF4e39b8),

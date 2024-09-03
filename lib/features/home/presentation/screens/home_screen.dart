@@ -1,4 +1,6 @@
 import 'package:flashlight/features/flashcard/presentation/screens/add_flashcard_screen.dart';
+import 'package:flashlight/features/home/domain/deck.dart';
+import 'package:flashlight/features/home/presentation/widgets/deck_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,51 +24,24 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 24, right: 24),
+          padding: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 52),
-              InkWell(
-                onTap: () => _goToStudySession(context),
-                borderRadius: BorderRadius.circular(12),
-                splashColor: Colors.white.withOpacity(0.24),
-                highlightColor: Colors.transparent,
-                child: Ink(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.54),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                    gradient: const LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment(0.8, 1),
-                      colors: [
-                        Color(0xFF63f8b5),
-                        Color(0xFF7765e3),
-                      ],
-                    ),
-                    // TODO: show shadow on press
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: Colors.black.withOpacity(0.16),
-                    //     offset: const Offset(0, 2),
-                    //     blurRadius: 4,
-                    //   ),
-                    // ],
-                  ),
-                  height: 120,
-                  child: const Center(
-                    child: Text(
-                      'Go to study session',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+              const SizedBox(height: 36),
+              const Text(
+                'Olá, Mário!',
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 16),
+              DeckCard(
+                deck: const Deck(
+                  id: '1',
+                  name: 'Master deck',
+                  totalCards: 10,
+                  cardsToStudy: 5,
                 ),
+                onTap: (deck) => _goToStudySession(context),
               ),
             ],
           ),
