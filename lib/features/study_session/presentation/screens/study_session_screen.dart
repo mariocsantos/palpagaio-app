@@ -43,18 +43,24 @@ class StudySessionScreen extends StatelessWidget {
           },
         ),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
             children: [
-              SizedBox(height: 16),
-              FlipCard(
+              const SizedBox(height: 16),
+              const FlipCard(
                 front: FlashCard(
                   text: 'English sentence',
                 ),
                 back: FlashCard(text: 'Portuguese translation'),
               ),
+              // TODO: Remove it when logic is implemented
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/session/completed');
+                  },
+                  child: const Text('finished')),
             ],
           ),
         ),

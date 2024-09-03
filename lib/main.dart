@@ -1,4 +1,5 @@
 import 'package:flashlight/features/home/presentation/screens/home_screen.dart';
+import 'package:flashlight/features/study_session/presentation/screens/study_session_completed_screen.dart';
 import 'package:flashlight/features/study_session/presentation/screens/study_session_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomeScreen(),
         '/session': (context) => const StudySessionScreen(),
+        '/session/completed': (context) => const StudySessionCompletedScreen(),
       },
     );
   }
