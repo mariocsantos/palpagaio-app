@@ -14,7 +14,7 @@ class DifficultProperties {
         return 'Good';
       case Difficult.hard:
         return 'Hard';
-      case Difficult.impossible:
+      case Difficult.forgot:
         return 'Forgot';
     }
   }
@@ -27,7 +27,7 @@ class DifficultProperties {
         return Colors.blue.shade50;
       case Difficult.hard:
         return Colors.orange.shade50;
-      case Difficult.impossible:
+      case Difficult.forgot:
         return Colors.red.shade50;
     }
   }
@@ -40,7 +40,7 @@ class DifficultProperties {
         return Colors.blue;
       case Difficult.hard:
         return Colors.orange;
-      case Difficult.impossible:
+      case Difficult.forgot:
         return Colors.red;
     }
   }

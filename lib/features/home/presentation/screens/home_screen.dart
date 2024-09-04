@@ -1,14 +1,12 @@
 import 'package:flashlight/features/flashcard/presentation/screens/add_flashcard_screen.dart';
-import 'package:flashlight/features/home/domain/deck.dart';
-import 'package:flashlight/features/home/presentation/widgets/deck_card.dart';
+import 'package:flashlight/features/home/data/deck_repository.dart';
+import 'package:flashlight/features/home/presentation/states/deck/deck.dart';
+import 'package:flashlight/features/home/presentation/widgets/deck_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  _goToStudySession(BuildContext context) {
-    Navigator.pushNamed(context, '/session');
-  }
 
   _addFlashcard(BuildContext context) {
     showModalBottomSheet(
@@ -34,14 +32,11 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 16),
-              DeckCard(
-                deck: const Deck(
-                  id: '1',
-                  name: 'Master deck',
-                  totalCards: 10,
-                  cardsToStudy: 5,
+              BlocProvider(
+                create: (context) => DeckBloc(
+                  deckRepository: DeckRepository(),
                 ),
-                onTap: (deck) => _goToStudySession(context),
+                child: const DeckContainer(),
               ),
             ],
           ),

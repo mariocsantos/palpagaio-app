@@ -4,7 +4,10 @@ import 'package:flashlight/features/study_session/presentation/screens/study_ses
 import 'package:flashlight/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+Future main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const MainApp());
 }
 

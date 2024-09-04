@@ -99,9 +99,9 @@ class StudySessionScreen extends StatelessWidget {
                     },
                   ),
                   DifficultyButton(
-                    difficult: Difficult.impossible,
+                    difficult: Difficult.forgot,
                     onPressed: () {
-                      _onDifficultySelected(context, Difficult.impossible);
+                      _onDifficultySelected(context, Difficult.forgot);
                     },
                   ),
                 ],

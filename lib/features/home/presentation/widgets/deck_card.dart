@@ -70,7 +70,7 @@ class DeckCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                deck.cardsToStudy.toString(),
+                                deck.cardsToReview.toString(),
                                 style: TextStyle(
                                   color: textColor,
                                   fontSize: 16,
