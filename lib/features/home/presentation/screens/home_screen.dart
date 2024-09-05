@@ -8,46 +8,55 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  _addFlashcard(BuildContext context) {
+  _addFlashcard(BuildContext context, BuildContext blocContext) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return const AddFlashcardScreen();
+        return AddFlashcardScreen(
+          onAdded: () {
+            blocContext.read<DeckBloc>().add(DeckFetch());
+            Navigator.of(context).pop();
+          },
+        );
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 36),
-              const Text(
-                'Olá, Mário!',
-                style: TextStyle(fontSize: 18),
-              ),
-              const SizedBox(height: 16),
-              BlocProvider(
-                create: (context) => DeckBloc(
-                  deckRepository: DeckRepository(),
+    return BlocProvider(
+      create: (context) => DeckBloc(
+        deckRepository: DeckRepository(),
+      ),
+      child: Scaffold(
+        body: const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.only(left: 16, right: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 36),
+                Text(
+                  'Olá, Mário!',
+                  style: TextStyle(fontSize: 18),
                 ),
-                child: const DeckContainer(),
-              ),
-            ],
+                SizedBox(height: 16),
+                DeckContainer()
+              ],
+            ),
           ),
         ),
+        floatingActionButton: BlocBuilder<DeckBloc, DeckState>(
+          builder: (blocContext, state) {
+            return FloatingActionButton.extended(
+              onPressed: () => _addFlashcard(context, blocContext),
+              label: const Text('Add cards'),
+              icon: const Icon(Icons.add),
+            );
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _addFlashcard(context),
-        label: const Text('Add cards'),
-        icon: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

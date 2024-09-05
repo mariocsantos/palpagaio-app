@@ -3,7 +3,7 @@ import 'package:flashlight/features/home/presentation/states/deck/deck_events.da
 import 'package:flashlight/features/home/presentation/states/deck/deck_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DeckBloc extends Bloc<DeckFetch, DeckState> {
+class DeckBloc extends Bloc<DeckEvent, DeckState> {
   DeckBloc({
     required DeckRepository deckRepository,
   })  : _repository = deckRepository,
