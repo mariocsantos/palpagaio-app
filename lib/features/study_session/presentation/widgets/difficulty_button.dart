@@ -7,20 +7,23 @@ class DifficultyButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.difficult,
+    this.disabled = false,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Difficult difficult;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     final DifficultProperties properties = DifficultProperties(difficult);
+    final Color disabledColor = Theme.of(context).disabledColor;
 
     return SizedBox(
       width: 72,
       height: 54,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: disabled ? null : onPressed,
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
@@ -31,10 +34,10 @@ class DifficultyButton extends StatelessWidget {
             const EdgeInsets.all(0),
           ),
           backgroundColor: MaterialStateProperty.all(
-            properties.color,
+            disabled ? disabledColor.withOpacity(0.1) : properties.color,
           ),
           foregroundColor: MaterialStateProperty.all(
-            properties.textColor,
+            disabled ? disabledColor : properties.textColor,
           ),
         ),
         child: Text(

@@ -18,24 +18,38 @@ class FlashCardAudio extends StatefulWidget {
 class _FlashCardAudioState extends State<FlashCardAudio> {
   bool _isPlaying = false;
 
-  void _playAudio() async {
-    final player = AudioPlayer();
+  void _playAudio(BuildContext context) async {
+    try {
+      final player = AudioPlayer();
 
-    setState(() {
-      _isPlaying = true;
-    });
+      setState(() {
+        _isPlaying = true;
+      });
 
-    player.onPlayerComplete.listen((event) {
+      player.onPlayerComplete.listen((event) {
+        setState(() {
+          _isPlaying = false;
+        });
+      });
+
+      await player.play(
+        UrlSource(
+          widget.audioUrl,
+        ),
+      );
+    } catch (error) {
       setState(() {
         _isPlaying = false;
       });
-    });
 
-    await player.play(
-      UrlSource(
-        widget.audioUrl,
-      ),
-    );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to play audio'),
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -52,7 +66,7 @@ class _FlashCardAudioState extends State<FlashCardAudio> {
           ? colorScheme.onPrimary
           : colorScheme.onSecondaryContainer,
       icon: Icon(_isPlaying ? Icons.pause : Icons.play_arrow),
-      onPressed: _playAudio,
+      onPressed: () => _playAudio(context),
     );
   }
 }

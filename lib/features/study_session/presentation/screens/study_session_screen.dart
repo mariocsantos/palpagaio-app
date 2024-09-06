@@ -1,15 +1,23 @@
-import 'package:flashlight/features/flashcard/presentation/widgets/flashcard.dart';
-import 'package:flashlight/features/flashcard/presentation/widgets/flip_card.dart';
 import 'package:flashlight/features/study_session/domain/difficult.dart';
+import 'package:flashlight/features/study_session/presentation/state/study_session/study_session.dart';
 import 'package:flashlight/features/study_session/presentation/widgets/difficulty_button.dart';
 import 'package:flashlight/features/study_session/presentation/widgets/study_section_progress.dart';
+import 'package:flashlight/features/study_session/presentation/widgets/study_session_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StudySessionScreen extends StatelessWidget {
   const StudySessionScreen({super.key});
 
-  _onDifficultySelected(BuildContext context, Difficult difficult) {
-    Navigator.pushNamed(context, '/session/completed');
+  _onDifficultySelected(
+    StudySessionBloc bloc,
+    Difficult difficult,
+  ) {
+    bloc.add(
+      StudySessionCardReviewed(
+        difficult: difficult,
+      ),
+    );
   }
 
   _confirmExit(BuildContext context) {
@@ -44,6 +52,11 @@ class StudySessionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StudySessionBloc bloc = BlocProvider.of<StudySessionBloc>(context);
+    bloc.add(
+      StudySessionStarted(),
+    );
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -52,64 +65,74 @@ class StudySessionScreen extends StatelessWidget {
             _confirmExit(context);
           },
         ),
-        title: const StudySectionProgress(current: 0, total: 10),
+        title: BlocBuilder<StudySessionBloc, StudySessionState>(
+          builder: (context, state) {
+            return StudySectionProgress(
+              current: state.currentIndex + 1,
+              total: state.cards.length,
+            );
+          },
+        ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Column(
-            children: [
-              const SizedBox(height: 8),
-              const Flexible(
-                child: FlipCard(
-                  front: FlashCard(
-                    text: 'I would like to checking to my flight to L.A',
-                    audioUrl:
-                        'https://storage.googleapis.com/flashlight-audios/hello%2C-mario',
-                    isFront: true,
-                  ),
-                  back: FlashCard(
-                    text:
-                        'Eu gostaria de fazer o check-in do meu voo para Los Angeles',
-                    audioUrl:
-                        'https://storage.googleapis.com/flashlight-audios/hello%2C-mario',
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: BlocConsumer<StudySessionBloc, StudySessionState>(
+        listenWhen: (previous, current) => current.isCompleted,
+        listener: (context, state) {
+          if (state.isCompleted) {
+            Navigator.pushNamed(context, '/session/completed');
+          }
+        },
+        builder: (context, state) {
+          final shouldDisableButtons = state.isLoading || state.isReviewing;
+
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: Column(
                 children: [
-                  DifficultyButton(
-                    difficult: Difficult.easy,
-                    onPressed: () {
-                      _onDifficultySelected(context, Difficult.easy);
-                    },
+                  const SizedBox(height: 8),
+                  const Flexible(
+                    child: StudySessionCardList(),
                   ),
-                  DifficultyButton(
-                    difficult: Difficult.regular,
-                    onPressed: () {
-                      _onDifficultySelected(context, Difficult.regular);
-                    },
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      DifficultyButton(
+                        difficult: Difficult.easy,
+                        disabled: shouldDisableButtons,
+                        onPressed: () {
+                          _onDifficultySelected(bloc, Difficult.easy);
+                        },
+                      ),
+                      DifficultyButton(
+                        difficult: Difficult.regular,
+                        disabled: shouldDisableButtons,
+                        onPressed: () {
+                          _onDifficultySelected(bloc, Difficult.regular);
+                        },
+                      ),
+                      DifficultyButton(
+                        difficult: Difficult.hard,
+                        disabled: shouldDisableButtons,
+                        onPressed: () {
+                          _onDifficultySelected(bloc, Difficult.hard);
+                        },
+                      ),
+                      DifficultyButton(
+                        difficult: Difficult.forgot,
+                        disabled: shouldDisableButtons,
+                        onPressed: () {
+                          _onDifficultySelected(bloc, Difficult.forgot);
+                        },
+                      ),
+                    ],
                   ),
-                  DifficultyButton(
-                    difficult: Difficult.hard,
-                    onPressed: () {
-                      _onDifficultySelected(context, Difficult.hard);
-                    },
-                  ),
-                  DifficultyButton(
-                    difficult: Difficult.forgot,
-                    onPressed: () {
-                      _onDifficultySelected(context, Difficult.forgot);
-                    },
-                  ),
+                  const SizedBox(height: 16),
                 ],
               ),
-              const SizedBox(height: 16),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
