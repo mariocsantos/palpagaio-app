@@ -1,4 +1,4 @@
-import 'package:flashlight/features/flashcard/presentation/widgets/flashcard_audio.dart';
+import 'package:palpagaio/features/flashcard/presentation/widgets/flashcard_audio.dart';
 import 'package:flutter/material.dart';
 
 class FlashCard extends StatelessWidget {

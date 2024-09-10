@@ -1,5 +1,5 @@
-import 'package:flashlight/features/flashcard/data/flashcard_repository.dart';
-import 'package:flashlight/features/flashcard/presentation/states/create_flashcard/create_flashcard_state.dart';
+import 'package:palpagaio/features/flashcard/data/flashcard_repository.dart';
+import 'package:palpagaio/features/flashcard/presentation/states/create_flashcard/create_flashcard_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CreateFlashcardCubit extends Cubit<CreateFlashcardState> {

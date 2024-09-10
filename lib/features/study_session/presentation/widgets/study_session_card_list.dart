@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flashlight/features/flashcard/presentation/widgets/flashcard.dart';
-import 'package:flashlight/features/flashcard/presentation/widgets/flip_card.dart';
-import 'package:flashlight/features/study_session/presentation/state/study_session/study_session.dart';
+import 'package:palpagaio/features/flashcard/presentation/widgets/flashcard.dart';
+import 'package:palpagaio/features/flashcard/presentation/widgets/flip_card.dart';
+import 'package:palpagaio/features/study_session/presentation/state/study_session/study_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

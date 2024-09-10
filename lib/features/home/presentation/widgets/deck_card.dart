@@ -1,4 +1,4 @@
-import 'package:flashlight/features/home/domain/deck.dart';
+import 'package:palpagaio/features/home/domain/deck.dart';
 import 'package:flutter/material.dart';
 
 class DeckCard extends StatelessWidget {

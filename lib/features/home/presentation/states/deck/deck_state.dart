@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flashlight/features/home/domain/deck.dart';
+import 'package:palpagaio/features/home/domain/deck.dart';
 
 class DeckState extends Equatable {
   const DeckState({

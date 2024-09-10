@@ -1,6 +1,6 @@
-import 'package:flashlight/features/flashcard/data/flashcard_repository.dart';
-import 'package:flashlight/features/flashcard/presentation/states/create_flashcard/create_flashcard.dart';
-import 'package:flashlight/features/flashcard/presentation/widgets/add_flashcard_form.dart';
+import 'package:palpagaio/features/flashcard/data/flashcard_repository.dart';
+import 'package:palpagaio/features/flashcard/presentation/states/create_flashcard/create_flashcard.dart';
+import 'package:palpagaio/features/flashcard/presentation/widgets/add_flashcard_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

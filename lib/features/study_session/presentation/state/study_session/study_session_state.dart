@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flashlight/features/study_session/domain/study_flashcard.dart';
+import 'package:palpagaio/features/study_session/domain/study_flashcard.dart';
 
 class StudySessionState extends Equatable {
   final List<StudyFlashcard> cards;

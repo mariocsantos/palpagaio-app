@@ -1,5 +1,5 @@
-import 'package:flashlight/features/study_session/domain/difficult.dart';
-import 'package:flashlight/features/study_session/domain/difficult_properties.dart';
+import 'package:palpagaio/features/study_session/domain/difficult.dart';
+import 'package:palpagaio/features/study_session/domain/difficult_properties.dart';
 import 'package:flutter/material.dart';
 
 class DifficultyButton extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:flashlight/features/study_session/domain/difficult.dart';
-import 'package:flashlight/features/study_session/presentation/state/study_session/study_session.dart';
-import 'package:flashlight/features/study_session/presentation/widgets/difficulty_button.dart';
-import 'package:flashlight/features/study_session/presentation/widgets/study_section_progress.dart';
-import 'package:flashlight/features/study_session/presentation/widgets/study_session_card_list.dart';
+import 'package:palpagaio/features/study_session/domain/difficult.dart';
+import 'package:palpagaio/features/study_session/presentation/state/study_session/study_session.dart';
+import 'package:palpagaio/features/study_session/presentation/widgets/difficulty_button.dart';
+import 'package:palpagaio/features/study_session/presentation/widgets/study_section_progress.dart';
+import 'package:palpagaio/features/study_session/presentation/widgets/study_session_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

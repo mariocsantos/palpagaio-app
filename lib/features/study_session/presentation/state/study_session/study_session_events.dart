@@ -1,4 +1,4 @@
-import 'package:flashlight/features/study_session/domain/difficult.dart';
+import 'package:palpagaio/features/study_session/domain/difficult.dart';
 
 abstract class StudySessionEvents {}
 

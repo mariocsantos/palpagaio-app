@@ -1,6 +1,6 @@
-import 'package:flashlight/features/study_session/domain/difficult.dart';
-import 'package:flashlight/features/study_session/domain/study_flashcard.dart';
-import 'package:flashlight/network/http/speech_api.dart';
+import 'package:palpagaio/features/study_session/domain/difficult.dart';
+import 'package:palpagaio/features/study_session/domain/study_flashcard.dart';
+import 'package:palpagaio/network/http/speech_api.dart';
 
 class StudySessionRepository {
   final _api = Api.speech();

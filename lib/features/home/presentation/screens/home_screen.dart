@@ -1,7 +1,7 @@
-import 'package:flashlight/features/flashcard/presentation/screens/add_flashcard_screen.dart';
-import 'package:flashlight/features/home/data/deck_repository.dart';
-import 'package:flashlight/features/home/presentation/states/deck/deck.dart';
-import 'package:flashlight/features/home/presentation/widgets/deck_container.dart';
+import 'package:palpagaio/features/flashcard/presentation/screens/add_flashcard_screen.dart';
+import 'package:palpagaio/features/home/data/deck_repository.dart';
+import 'package:palpagaio/features/home/presentation/states/deck/deck.dart';
+import 'package:palpagaio/features/home/presentation/widgets/deck_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

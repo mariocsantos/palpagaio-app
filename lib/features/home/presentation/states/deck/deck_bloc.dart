@@ -1,6 +1,6 @@
-import 'package:flashlight/features/home/data/deck_repository.dart';
-import 'package:flashlight/features/home/presentation/states/deck/deck_events.dart';
-import 'package:flashlight/features/home/presentation/states/deck/deck_state.dart';
+import 'package:palpagaio/features/home/data/deck_repository.dart';
+import 'package:palpagaio/features/home/presentation/states/deck/deck_events.dart';
+import 'package:palpagaio/features/home/presentation/states/deck/deck_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DeckBloc extends Bloc<DeckEvent, DeckState> {

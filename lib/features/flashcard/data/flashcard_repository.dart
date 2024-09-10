@@ -1,4 +1,4 @@
-import 'package:flashlight/network/http/speech_api.dart';
+import 'package:palpagaio/network/http/speech_api.dart';
 
 class FlashcardRepository {
   final _api = Api.speech();

@@ -1,4 +1,4 @@
-package com.example.flashlight
+package com.example.palpagaio
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-import 'package:flashlight/features/study_session/domain/difficult.dart';
+import 'package:palpagaio/features/study_session/domain/difficult.dart';
 import 'package:flutter/material.dart';
 
 class DifficultProperties {

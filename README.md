@@ -1,3 +1,3 @@
-# flashlight
+# Palpagaio
 
 A new Flutter project.

@@ -1,6 +1,6 @@
-import 'package:flashlight/features/study_session/data/study_session_repository.dart';
-import 'package:flashlight/features/study_session/presentation/state/study_session/study_session_events.dart';
-import 'package:flashlight/features/study_session/presentation/state/study_session/study_session_state.dart';
+import 'package:palpagaio/features/study_session/data/study_session_repository.dart';
+import 'package:palpagaio/features/study_session/presentation/state/study_session/study_session_events.dart';
+import 'package:palpagaio/features/study_session/presentation/state/study_session/study_session_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StudySessionBloc extends Bloc<StudySessionEvents, StudySessionState> {

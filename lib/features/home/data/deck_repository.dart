@@ -1,5 +1,5 @@
-import 'package:flashlight/features/home/domain/deck.dart';
-import 'package:flashlight/network/http/speech_api.dart';
+import 'package:palpagaio/features/home/domain/deck.dart';
+import 'package:palpagaio/network/http/speech_api.dart';
 
 class DeckRepository {
   final _api = Api.speech();
