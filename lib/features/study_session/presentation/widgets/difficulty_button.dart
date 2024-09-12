@@ -25,20 +25,21 @@ class DifficultyButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: disabled ? null : onPressed,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          padding: MaterialStateProperty.all(
+          padding: WidgetStateProperty.all(
             const EdgeInsets.all(0),
           ),
-          backgroundColor: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(
             disabled ? disabledColor.withOpacity(0.1) : properties.color,
           ),
-          foregroundColor: MaterialStateProperty.all(
+          foregroundColor: WidgetStateProperty.all(
             disabled ? disabledColor : properties.textColor,
           ),
+          overlayColor: WidgetStateProperty.all(properties.overlayColor),
         ),
         child: Text(
           properties.text,

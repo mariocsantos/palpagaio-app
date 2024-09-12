@@ -44,4 +44,17 @@ class DifficultProperties {
         return Colors.red;
     }
   }
+
+  Color get overlayColor {
+    switch (difficult) {
+      case Difficult.easy:
+        return Colors.green.shade100;
+      case Difficult.regular:
+        return Colors.blue.shade100;
+      case Difficult.hard:
+        return Colors.orange.shade100;
+      case Difficult.forgot:
+        return Colors.red.shade100;
+    }
+  }
 }

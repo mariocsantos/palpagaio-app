@@ -13,6 +13,7 @@ class Deck extends Equatable {
   final int totalCards;
   final int cardsToReview;
 
+  @override
   List<Object?> get props => [id, name, totalCards, cardsToReview];
 
   @override

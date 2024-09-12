@@ -1,5 +1,6 @@
 import 'package:palpagaio/features/home/domain/deck.dart';
 import 'package:flutter/material.dart';
+import 'package:palpagaio/widgets/bubble.dart';
 
 class DeckCard extends StatelessWidget {
   const DeckCard({
@@ -16,27 +17,13 @@ class DeckCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textColor = theme.colorScheme.onPrimary;
 
-    return InkWell(
+    return GestureDetector(
       onTap: () => onTap(deck),
-      borderRadius: BorderRadius.circular(12),
-      splashColor: Colors.white.withOpacity(0.24),
-      highlightColor: Colors.transparent,
-      child: Ink(
+      child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.white.withOpacity(0.54),
-            width: 1,
-          ),
+          color: theme.colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: const Alignment(0.8, 1),
-            colors: [
-              theme.colorScheme.primaryContainer.withOpacity(0.87),
-              theme.colorScheme.primary,
-            ],
-          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.16),
@@ -45,90 +32,99 @@ class DeckCard extends StatelessWidget {
             ),
           ],
         ),
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: GestureDetector(
+            onTap: () => onTap(deck),
+            child: Stack(
+              children: [
+                const Bubble(
+                  size: 100,
+                  top: -50,
+                  right: -30,
+                ),
+                const Bubble(
+                  size: 300,
+                  right: -40,
+                  bottom: -250,
+                ),
+                const Bubble(
+                  size: 50,
+                  left: -10,
+                  top: -10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        deck.name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: textColor,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                deck.cardsToReview.toString(),
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                'to study',
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            deck.name,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: textColor,
+                            ),
                           ),
-                          const SizedBox(width: 24),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          const SizedBox(height: 16),
+                          Row(
                             children: [
-                              Text(
-                                deck.totalCards.toString(),
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 16,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    deck.cardsToReview.toString(),
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    'to study',
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                'Total',
-                                style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 12,
-                                ),
+                              const SizedBox(width: 24),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    deck.totalCards.toString(),
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Total',
+                                    style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ],
                       ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: theme.colorScheme.onPrimary,
+                      ),
                     ],
                   ),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: textColor,
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              right: -200,
-              top: -50,
-              child: Container(
-                width: 300,
-                height: 300,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.08),
-                  borderRadius: BorderRadius.circular(400),
                 ),
-              ),
-            )
-          ],
+              ],
+            ),
+          ),
         ),
       ),
     );

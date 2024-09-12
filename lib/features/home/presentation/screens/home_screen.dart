@@ -48,9 +48,13 @@ class HomeScreen extends StatelessWidget {
         ),
         floatingActionButton: BlocBuilder<DeckBloc, DeckState>(
           builder: (blocContext, state) {
+            final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
             return FloatingActionButton.extended(
+              backgroundColor: colorScheme.primary,
+              foregroundColor: colorScheme.onPrimary,
               onPressed: () => _addFlashcard(context, blocContext),
-              label: const Text('Add cards'),
+              label: const Text('ADD CARDS'),
               icon: const Icon(Icons.add),
             );
           },

@@ -24,11 +24,16 @@ class StudySessionScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) {
+        final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
         return AlertDialog(
           title: const Text('Are you sure you want to exit?'),
           content: const Text('You will lose your progress.'),
           actions: [
             TextButton(
+              style: ButtonStyle(
+                foregroundColor: WidgetStatePropertyAll(colorScheme.onSurface),
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },

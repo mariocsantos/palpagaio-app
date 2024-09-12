@@ -75,8 +75,8 @@ class _StudySessionCompletedScreenState
               const Spacer(
                 flex: 2,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
+              FilledButton(
+                style: FilledButton.styleFrom(
                   minimumSize: const Size.fromHeight(48),
                 ),
                 onPressed: () {

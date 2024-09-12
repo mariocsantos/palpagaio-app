@@ -58,7 +58,7 @@ class _FlashCardAudioState extends State<FlashCardAudio> {
 
     return IconButton.filled(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(
           widget.isFront ? colorScheme.primary : colorScheme.secondaryContainer,
         ),
       ),

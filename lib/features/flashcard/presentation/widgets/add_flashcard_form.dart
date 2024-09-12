@@ -7,7 +7,11 @@ class AddFlashcardForm extends StatelessWidget {
 
   final void Function() onAdded;
 
-  _onSubmit(BuildContext context) async {
+  _onSubmit(BuildContext context, bool canSubmit) async {
+    if (!canSubmit) {
+      return;
+    }
+
     String snackBarText = '';
 
     try {
@@ -36,7 +40,6 @@ class AddFlashcardForm extends StatelessWidget {
           TextField(
             decoration: const InputDecoration(
               labelText: 'Front side',
-              border: OutlineInputBorder(),
             ),
             onChanged: (value) {
               context.read<CreateFlashcardCubit>().termChanged(value);
@@ -46,18 +49,17 @@ class AddFlashcardForm extends StatelessWidget {
           TextField(
             decoration: const InputDecoration(
               labelText: 'Back side',
-              border: OutlineInputBorder(),
             ),
             onChanged: (value) {
               context.read<CreateFlashcardCubit>().definitionChanged(value);
             },
           ),
           const Spacer(),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
+          FilledButton(
+            style: FilledButton.styleFrom(
               minimumSize: const Size.fromHeight(48),
             ),
-            onPressed: state.canSubmit ? () => _onSubmit(context) : null,
+            onPressed: () => _onSubmit(context, state.canSubmit),
             child: state.isSubmitting
                 ? SizedBox(
                     width: 24,
