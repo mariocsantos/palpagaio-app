@@ -1,3 +1,4 @@
+import 'package:palpagaio/features/authentication/presentation/states/authentication/authentication.dart';
 import 'package:palpagaio/features/flashcard/presentation/screens/add_flashcard_screen.dart';
 import 'package:palpagaio/features/home/data/deck_repository.dart';
 import 'package:palpagaio/features/home/presentation/states/deck/deck.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  _addFlashcard(BuildContext context, BuildContext blocContext) {
+  void _addFlashcard(BuildContext context, BuildContext blocContext) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -22,6 +23,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  void _signOut(BuildContext context) {
+    final bloc = context.read<AuthenticationBloc>();
+    bloc.add(SignOut());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,19 +35,28 @@ class HomeScreen extends StatelessWidget {
         deckRepository: DeckRepository(),
       ),
       child: Scaffold(
-        body: const SafeArea(
+        body: SafeArea(
           child: Padding(
             padding: EdgeInsets.only(left: 16, right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 36),
-                Text(
-                  'Olá, Mário!',
-                  style: TextStyle(fontSize: 18),
+                const SizedBox(height: 36),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Olá, Mário!',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    TextButton(
+                      onPressed: () => _signOut(context),
+                      child: const Text('Sair'),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 16),
-                DeckContainer()
+                const SizedBox(height: 16),
+                const DeckContainer(),
               ],
             ),
           ),

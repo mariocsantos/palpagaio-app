@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "335859038050",
+    "project_id": "palpagaio",
+    "storage_bucket": "palpagaio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335859038050:android:41d0135cce1378b9f81e3b",
+        "android_client_info": {
+          "package_name": "com.example.palpagaio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335859038050-uqogjqr7mpm61333o9o7bos36nem96ir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbEOHNOvO8FiytfHl-RUVXdKlR4lGpit8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335859038050-uqogjqr7mpm61333o9o7bos36nem96ir.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "335859038050-smknn77668350l4hcja3n32gmn2np42o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.palpagaio"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

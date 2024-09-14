@@ -10,6 +10,8 @@ dependencies:
   audioplayers: ^6.1.0
   dio: ^5.7.0
   equatable: ^2.0.5
+  firebase_auth: ^5.2.1
+  firebase_core: ^3.4.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -17,6 +19,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.1
   flutter_svg: ^2.0.10+1
+  google_sign_in: ^6.2.1
   lottie: ^3.1.2
 
 dev_dependencies:
@@ -31,3 +34,4 @@ flutter:
     - assets/animations/celebration.json
     - assets/images/logo.svg
     - assets/images/branding.svg
+    - assets/images/google_brand.svg
