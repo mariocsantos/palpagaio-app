@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:palpagaio/network/http/interceptors/authorization_interceptor.dart';
 
 Dio createGenericInstance(BaseOptions options) {
   final dio = Dio(options);
+  dio.interceptors.add(AuthorizationInterceptor());
   return dio;
 }
 

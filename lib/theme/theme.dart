@@ -21,7 +21,7 @@ ColorScheme colorScheme = const ColorScheme.light(
   outlineVariant: Color(0xFFC4C7C8),
   shadow: Color(0xFF000000),
   scrim: Color(0xFF000000),
-  inverseSurface: Color(4281413680),
+  inverseSurface: Color(0xFF313030),
   surfaceDim: Color(0xFFDDD9D9),
   surfaceBright: Color(0xFFFCF8F8),
   surfaceContainerLowest: Color(0xFFFFFFFF),
