@@ -30,6 +30,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return BlocProvider(
       create: (context) => DeckBloc(
         deckRepository: DeckRepository(),
@@ -37,7 +39,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,13 +47,45 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Olá, Mário!',
-                      style: TextStyle(fontSize: 18),
+                    BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                      builder: (context, state) {
+                        final user = state.user;
+                        final name = user?.displayName?.split(' ').first ?? '';
+
+                        return Row(
+                          children: [
+                            user?.photoURL == null
+                                ? CircleAvatar(
+                                    backgroundColor:
+                                        colorScheme.surfaceContainerHigh,
+                                    child: Text(
+                                      name.characters.first.toUpperCase(),
+                                      style: TextStyle(
+                                        color: colorScheme.onSurface,
+                                      ),
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(user!.photoURL!),
+                                  ),
+                            const SizedBox(width: 16),
+                            Text(
+                              'Hello, $name!',
+                              style: const TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: colorScheme.onSurface,
+                      ),
                       onPressed: () => _signOut(context),
-                      child: const Text('Sair'),
+                      child: const Text('Sign out'),
                     ),
                   ],
                 ),

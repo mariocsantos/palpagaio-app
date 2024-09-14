@@ -19,20 +19,29 @@ class AuthenticationBloc
     AppStarted event,
     Emitter<AuthenticationState> emit,
   ) {
-    final isAuthenticated = _repository.isAuthenticated();
-    emit(AuthenticationState(isAuthenticated: isAuthenticated));
+    final user = _repository.getCurrentUser();
+    emit(AuthenticationState(
+      isAuthenticated: user != null,
+      user: user,
+    ));
   }
 
   _onSignInWithGoogle(
     SignInWithGoogle event,
     Emitter<AuthenticationState> emit,
   ) async {
-    final crendential = await _repository.signInWithGoogle();
+    final credential = await _repository.signInWithGoogle();
 
-    if (crendential?.user?.email != null) {
-      emit(AuthenticationState(isAuthenticated: true));
+    if (credential?.user?.email != null) {
+      emit(AuthenticationState(
+        isAuthenticated: true,
+        user: credential?.user,
+      ));
     } else {
-      emit(AuthenticationState(isAuthenticated: false));
+      emit(const AuthenticationState(
+        isAuthenticated: false,
+        user: null,
+      ));
     }
   }
 
@@ -41,6 +50,9 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     await _repository.signOut();
-    emit(AuthenticationState(isAuthenticated: false));
+    emit(const AuthenticationState(
+      isAuthenticated: false,
+      user: null,
+    ));
   }
 }
